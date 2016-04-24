@@ -1,0 +1,59 @@
+body{
+	background-image: url("../../assets/images/starwars.jpeg");
+}
+
+.wrapper{
+	width: 980px;
+	
+	min-height: 600px;
+	margin: 0 auto;
+	padding: 10px;	
+}
+
+header{
+	width: 980px;
+	color: black;
+	height:55px;
+	text-align: right;
+	background-color: rgb(36, 37, 31);	
+}
+
+#rpg{
+	font-size: 30px;
+	font-family: "Arial", Helvetica, sans-serif;
+	text-align: center;
+	width: 170px;
+	float: right;
+	text-shadow: 2px 2px #F1D43E;
+	font-style: italic;
+}
+
+#logo{
+	float: left;
+}
+
+#logorpg{
+	float: right;
+}
+
+#characters{
+	width: 970px;
+	min-height: 100px;
+	
+}
+
+#enemies{
+	width: 900px;
+	min-height: 100px;
+}
+
+#fight{
+	width: 900px;
+	min-height: 50px;
+}
+
+#defender{
+	width: 900px;
+	min-height: 100px;
+}
+

@@ -10,13 +10,16 @@
 </head>
 <body>
 
-<div class="wrapper">	
+<!--Document wrapper to contain header and game sections to center of screen-->
+<div class="wrapper">
+<!--Header section with Star Wars RPG logo-->	
 	<header>
 		<div id="rpg">
 		<img id="logo" src="assets/images/logo.png" width="150" height="50"><br><caption id="logorpg"><strong>RPG!</strong></caption><br>
 		</div>
-	</header>
+	</header><!--End header section-->
 
+<!--Top section to contain characters before the game begins-->
 	<section id="character">
 		<div id="lukeSkywalker" class="chooseCharacter luk">
 			<span>lukeSkywalker</span><br>
@@ -38,36 +41,40 @@
 			<img src="assets/images/darthmaul.png" width="150" height="150"><br>
 			<span id="score4">180</span>
 		</div>
-	</section>
+	</section><!--End top section-->
 
-
+<!--Section to contain yourCharacter after chosen-->
 	<section class="yourSection">
 		<h3>Your Character</h3>
 
-	</section>
+	</section><!--End your character section-->
 
+<!--Section to contain opponents available to fight once selected on screed-->
 	<section class="enemySection">
 		<h3>Enemies Available to Attack</h3>
 
-	</section>
+	</section><!--End opponent section-->
 
-
+<!--Section to contain the attack button-->
 	<section class="fight">
 		<h3>Fight Section</h3>
 		<button id="fight">Attack</button>
-	</section>
+	</section><!--End attack button section-->
 
+<!--Section to contain current defender once chosen on screen-->
 	<section class="defense">
 		<h3>Defender</h3>
 
-	</section>
+	</section><!--End current defender section-->
+	
+<!--Section used to attach jQuery fighter updates at the bottom of screen-->
 	<section id="billboard">
 	<span id="caption1"> </span><br>
 	<span id="caption2"> </span><br>
 		
-	</section>
+	</section><!--End JQuery section-->
 
-</div>
+</div><!--End document wrapper-->
 
 
 

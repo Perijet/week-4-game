@@ -1,3 +1,4 @@
+//Objects created for each player
 var lukeSkywalker = {
 	name: "Luke Skywalker",
 	health: 100,
@@ -31,33 +32,41 @@ var darthMaul = {
 	counter: 10,
 };
 
+//Begin document.ready function
 $(document).ready(function(){
-	
+
+//Begin fighter click function	
 $('.chooseCharacter').on('click', character);
 $('.chooseCharacter').click(function(){
 	$('.chooseCharacter').off('click', character);
-});	
+});	//End fighter click function
 	
+//Begin opponent click function
 $('.enemySection').on('click', defender);
 $('.enemySection').click(function(){
-});
+}); //End opponent click function
 
+//Activate attack function via the attack button
 $('#fight').click(attack);
 
+}); //End document.ready function
 
-});
-
+//Function to append yourCharacter and enemies available to their respective sections
 function character(){
 	$('.enemySection').append($('.chooseCharacter'));
 	$('.yourSection').append(this);
-}
+} //End function to append yourCharacter and enemies available to their respective sections
 
+//Function to append opponent to respective section
 function defender(event){
 	$('.defense').append($(event.target).parents('.chooseCharacter'));	
-}
+} //End function to append opponent to respective section
 
+
+//Begin function to select and track fighters and opponents
 function attack(){
 
+//Statements used to attach text from fighter div to respective objects
 var fighter = $('.yourSection div span:first').text();
 if(fighter == "lukeSkywalker"){
 	fighter = lukeSkywalker;
@@ -76,6 +85,7 @@ if(fighter == "darthMaul"){
 	$('#score4').html(fighter.health);
 }
 
+//Statements used to attach text from opponent div to respective objects
 var opponent = $('.defense div span:first').text();
 if(opponent == "lukeSkywalker"){
 	opponent = lukeSkywalker;
@@ -94,22 +104,17 @@ if(opponent == "darthMaul"){
 	$('#score4').html(opponent.health);
 }
 
-	console.log(fighter.health);
-	console.log(opponent.health);
-	console.log(fighter);
-	console.log(opponent);
-
-
-
+//jQuery used to get and manipulate display for current attacks and counter attacks
 $('#caption1').html('You attacked ' + opponent.name + ' for ' + fighter.attack + ' damages' + 
 	'<br>' + opponent.name + ' attacked you back for ' + opponent.counter + ' damages');
 $('#caption2').empty();
 
-opponent.health -= fighter.attack;
+//Statements to update players health and display current attack and counter attack numbers
+opponent.health =- fighter.attack;
 fighter.health -= opponent.counter;
 fighter.attack += fighter.constant;
 	
-
+//Begin logic statements to determ if opponett or fighter wins game 
 if(fighter.health >= 0 && opponent.health <= 0){
 fighter.wins++
 console.log(fighter.wins);
@@ -131,15 +136,16 @@ else if(fighter.wins === 3){
 	$('#billboard').append('<button id="startOver">Reset</button>');
 	$('#startOver').click(reset);
 	console.log('you win all');
-}
+}//End logic statements to determ if opponett or fighter wins game
 
+}//End function to select and track fighters and opponents
 
-
-}
-
+//Begin function to reset game after fighter loss or if game is won
 function reset(){
 	location.reload();
-}
+}// End function to reset game after fighter loss or if game is won
+
+
 function disable(){
 	$('#caption2').html('You have been defeated game over');
 }

@@ -12,6 +12,7 @@ var obiWan = {
 	attack: 18,
 	constant: 18,
 	counter: 10,
+	wins: 0,
 };
 
 var darthSidious = {
@@ -30,7 +31,8 @@ var darthMaul = {
 	counter: 10,
 };
 
-$(document).ready(function(){	
+$(document).ready(function(){
+	
 $('.chooseCharacter').on('click', character);
 $('.chooseCharacter').click(function(){
 	$('.chooseCharacter').off('click', character);
@@ -55,8 +57,8 @@ function defender(event){
 }
 
 function attack(){
-var fighter = $('.yourSection div span:first').text();
 
+var fighter = $('.yourSection div span:first').text();
 if(fighter == "lukeSkywalker"){
 	fighter = lukeSkywalker;
 	$('#score1').html(fighter.health);
@@ -74,9 +76,7 @@ if(fighter == "darthMaul"){
 	$('#score4').html(fighter.health);
 }
 
-
 var opponent = $('.defense div span:first').text();
-
 if(opponent == "lukeSkywalker"){
 	opponent = lukeSkywalker;
 	$('#score1').html(opponent.health);
@@ -94,10 +94,6 @@ if(opponent == "darthMaul"){
 	$('#score4').html(opponent.health);
 }
 
-if (opponent == "darthMaul"){
-	console.log('wtf');
-}
-
 	console.log(fighter.health);
 	console.log(opponent.health);
 	console.log(fighter);
@@ -105,46 +101,39 @@ if (opponent == "darthMaul"){
 
 
 
-
-
-
 $('#caption1').html('You attacked ' + opponent.name + ' for ' + fighter.attack + ' damages' + 
 	'<br>' + opponent.name + ' attacked you back for ' + opponent.counter + ' damages');
-//$('#caption2').html(opponent.name + ' attacked you back for ' + opponent.attack + ' damages');
 $('#caption2').empty();
 
+opponent.health -= fighter.attack;
+fighter.health -= opponent.counter;
+fighter.attack += fighter.constant;
+	
 
 if(fighter.health >= 0 && opponent.health <= 0){
+fighter.wins++
+console.log(fighter.wins);
 	$('#caption2').html('You have defeated ' + opponent.name + ' you can choose to fight another enemy');
 	$('.defense div').empty();
-	//$('#fight').attr
 	$('#caption1').empty();
-
-	
 	console.log('You win');
 }
 else if(opponent.health >= 0 && fighter.health <= 0){
 	$('#caption2').html('You have been defeated game over');
 	$('#caption1').empty();
-	
 	$('#billboard').append('<button id="startOver">Reset</button>');
-	$('#startOver').click(reset);
-	
+	$('#startOver').click(reset);	
 	console.log('The force wins');
+	
 }
-
-
-else if(($('.defense').children().length <= 1) && ($('.enemySection').children().length <= 1)){
+else if(fighter.wins === 3){
 	$('#caption1').html('You win game over!!!');
 	$('#billboard').append('<button id="startOver">Reset</button>');
 	$('#startOver').click(reset);
 	console.log('you win all');
-	
 }
 
-opponent.health -= fighter.attack;
-fighter.health -= opponent.counter;
-fighter.attack += fighter.constant;
+
 
 }
 

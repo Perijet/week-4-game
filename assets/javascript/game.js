@@ -109,15 +109,12 @@ $('#caption1').html('You attacked ' + opponent.name + ' for ' + fighter.attack +
 	'<br>' + opponent.name + ' attacked you back for ' + opponent.counter + ' damages');
 $('#caption2').empty();
 
-//Statements to update players health and display current attack and counter attack numbers
-opponent.health =- fighter.attack;
-fighter.health -= opponent.counter;
-fighter.attack += fighter.constant;
+
 	
 //Begin logic statements to determ if opponett or fighter wins game 
 if(fighter.health >= 0 && opponent.health <= 0){
-fighter.wins++
-console.log(fighter.wins);
+	fighter.wins++
+	console.log(fighter.wins);
 	$('#caption2').html('You have defeated ' + opponent.name + ' you can choose to fight another enemy');
 	$('.defense div').empty();
 	$('#caption1').empty();
@@ -131,12 +128,17 @@ else if(opponent.health >= 0 && fighter.health <= 0){
 	console.log('The force wins');
 	
 }
-else if(fighter.wins === 3){
+else if(fighter.wins == 3){
 	$('#caption1').html('You win game over!!!');
 	$('#billboard').append('<button id="startOver">Reset</button>');
 	$('#startOver').click(reset);
 	console.log('you win all');
 }//End logic statements to determ if opponett or fighter wins game
+
+//Statements to update players health and display current attack and counter attack numbers
+opponent.health -= fighter.attack;
+fighter.health -= opponent.counter;
+fighter.attack += fighter.constant;
 
 }//End function to select and track fighters and opponents
 

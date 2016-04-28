@@ -9,8 +9,8 @@ var lukeSkywalker = {
 var obiWan = {
 	name: "Obi Wan Kenobi",
 	health: 120,
-	attack: 8,
-	constant: 8,
+	attack: 18,
+	constant: 18,
 	counter: 10,
 };
 
@@ -27,7 +27,7 @@ var darthMaul = {
 	health: 180,
 	attack: 20,
 	constant: 20,
-	counter: 25,
+	counter: 10,
 };
 
 $(document).ready(function(){	
@@ -111,12 +111,15 @@ if (opponent == "darthMaul"){
 $('#caption1').html('You attacked ' + opponent.name + ' for ' + fighter.attack + ' damages' + 
 	'<br>' + opponent.name + ' attacked you back for ' + opponent.counter + ' damages');
 //$('#caption2').html(opponent.name + ' attacked you back for ' + opponent.attack + ' damages');
+$('#caption2').empty();
+
 
 if(fighter.health >= 0 && opponent.health <= 0){
 	$('#caption2').html('You have defeated ' + opponent.name + ' you can choose to fight another enemy');
 	$('.defense div').empty();
 	//$('#fight').attr
 	$('#caption1').empty();
+
 	
 	console.log('You win');
 }
@@ -131,7 +134,7 @@ else if(opponent.health >= 0 && fighter.health <= 0){
 }
 
 
-else if($.isEmptyObject('.enemySection')){
+else if(($('.defense').children().length <= 1) && ($('.enemySection').children().length <= 1)){
 	$('#caption1').html('You win game over!!!');
 	$('#billboard').append('<button id="startOver">Reset</button>');
 	$('#startOver').click(reset);

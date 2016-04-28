@@ -40,7 +40,8 @@ $('.enemySection').on('click', defender);
 $('.enemySection').click(function(){
 });
 
-$('.fight').click(attack);
+$('#fight').click(attack);
+
 
 });
 
@@ -103,19 +104,18 @@ if (opponent == "darthMaul"){
 	console.log(opponent);
 
 
-opponent.health -= fighter.attack;
-fighter.health -= opponent.attack;
-fighter.attack += fighter.constant;
+
 
 
 
 $('#caption1').html('You attacked ' + opponent.name + ' for ' + fighter.attack + ' damages' + 
-	'<br>' + opponent.name + ' attacked you back for ' + opponent.attack + ' damages');
+	'<br>' + opponent.name + ' attacked you back for ' + opponent.counter + ' damages');
 //$('#caption2').html(opponent.name + ' attacked you back for ' + opponent.attack + ' damages');
 
 if(fighter.health >= 0 && opponent.health <= 0){
 	$('#caption2').html('You have defeated ' + opponent.name + ' you can choose to fight another enemy');
 	$('.defense div').empty();
+	//$('#fight').attr
 	$('#caption1').empty();
 	
 	console.log('You win');
@@ -123,6 +123,10 @@ if(fighter.health >= 0 && opponent.health <= 0){
 else if(opponent.health >= 0 && fighter.health <= 0){
 	$('#caption2').html('You have been defeated game over');
 	$('#caption1').empty();
+	
+	$('#billboard').append('<button id="startOver">Reset</button>');
+	$('#startOver').click(reset);
+	
 	console.log('The force wins');
 }
 
@@ -135,7 +139,9 @@ else if($.isEmptyObject('.enemySection')){
 	
 }
 
-
+opponent.health -= fighter.attack;
+fighter.health -= opponent.counter;
+fighter.attack += fighter.constant;
 
 }
 
@@ -144,5 +150,9 @@ function reset(){
 }
 function disable(){
 	$('#caption2').html('You have been defeated game over');
+}
+
+function no(){
+	$('#billboard').append('No');
 }
 
